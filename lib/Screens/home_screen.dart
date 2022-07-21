@@ -9,9 +9,17 @@ class HomeScreen extends StatelessWidget {
       title: 'Home Screen',
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurpleAccent,
           title: const Text('Crypto Real Time Price Data'),
         ),
         body: const CryptoPricePair(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add_box_rounded),
+          backgroundColor: Colors.deepPurpleAccent,
+          onPressed: () {
+              
+          },
+        ),
       ),
     );
   }
