@@ -29,7 +29,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                     value: _baseCurrency,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
+                    style: const TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold),
                     underline: Container(
                       height: 2,
                       color: Colors.deepPurpleAccent,
@@ -52,7 +52,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                 }
               },
             ),
-            const Text("➡"),
+            const Text("➡", style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold)),
             FutureBuilder<List<String>>(
               future: get_all_fiat_currencies(),
               builder: (context, snapshot) {
@@ -61,7 +61,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                     value: _fiatCurrency,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurple),
+                    style: const TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold),
                     underline: Container(
                       height: 2,
                       color: Colors.deepPurpleAccent,
@@ -84,7 +84,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                 }
               },
             ),
-            const Text(" = ["),
+            const Text(" = [", style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold)),
             FutureBuilder<String>(
               future: get_price_from_trading_pair(
                   "$_baseCurrency", "$_fiatCurrency"),
@@ -93,13 +93,12 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                 if (snapshot.connectionState == ConnectionState.done) {
                   btcToUSDPrice = snapshot.data.toString();
                   return Text(
-                      '1 $_baseCurrency is $btcToUSDPrice $_fiatCurrency');
+                      '1 $_baseCurrency is $btcToUSDPrice $_fiatCurrency', style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold));
                 }
-                return Text(
-                    '1 $_baseCurrency is $btcToUSDPrice $_fiatCurrency');
+                return Text("ERROR");
               },
             ),
-            const Text(" ]")
+            const Text(" ]", style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold))
           ],
         ),
       ),
