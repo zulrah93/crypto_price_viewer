@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:crypto_price_viewer/constants.dart';
 import 'package:crypto_price_viewer/coinbase_rest_apis.dart';
 
 class CryptoPricePair extends StatefulWidget {
@@ -17,7 +18,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
       child: Container(
         height: 80.0,
         width: MediaQuery.of(context).size.width - 20,
-        color: Colors.amberAccent,
+        color: primaryColorB,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -29,10 +30,10 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                     value: _baseCurrency,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold),
+                    style: const TextStyle(color: primaryColorA, fontWeight: FontWeight.bold),
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                      color: primaryColorA,
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
@@ -52,7 +53,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                 }
               },
             ),
-            const Text("➡", style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold)),
+            const Text("➡", style: TextStyle(color: primaryColorA, fontWeight: FontWeight.bold)),
             FutureBuilder<List<String>>(
               future: get_all_fiat_currencies(),
               builder: (context, snapshot) {
@@ -61,10 +62,10 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                     value: _fiatCurrency,
                     icon: const Icon(Icons.arrow_downward),
                     elevation: 16,
-                    style: const TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold),
+                    style: const TextStyle(color: primaryColorA, fontWeight: FontWeight.bold),
                     underline: Container(
                       height: 2,
-                      color: Colors.deepPurpleAccent,
+                      color: primaryColorA,
                     ),
                     onChanged: (String? newValue) {
                       setState(() {
@@ -84,7 +85,7 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                 }
               },
             ),
-            const Text(" = [", style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold)),
+            const Text(" = [", style: TextStyle(color: primaryColorA, fontWeight: FontWeight.bold)),
             FutureBuilder<String>(
               future: get_price_from_trading_pair(
                   "$_baseCurrency", "$_fiatCurrency"),
@@ -93,12 +94,12 @@ class _CryptoPricePairState extends State<CryptoPricePair> {
                 if (snapshot.connectionState == ConnectionState.done) {
                   btcToUSDPrice = snapshot.data.toString();
                   return Text(
-                      '1 $_baseCurrency is $btcToUSDPrice $_fiatCurrency', style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold));
+                      '1 $_baseCurrency is $btcToUSDPrice $_fiatCurrency', style: TextStyle(color: primaryColorA, fontWeight: FontWeight.bold));
                 }
                 return Text("ERROR");
               },
             ),
-            const Text(" ]", style: TextStyle(color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold))
+            const Text(" ]", style: TextStyle(color: primaryColorA, fontWeight: FontWeight.bold))
           ],
         ),
       ),
