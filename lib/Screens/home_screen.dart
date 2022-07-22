@@ -7,10 +7,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home Screen',
+      debugShowCheckedModeBanner: false, // Rather not show to user that the build is in debug mode
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: primaryColorA,
-          title: const Text('Crypto Real Time Price Data'),
+          title: const Text('Crypto Real Time Price Data')
         ),
         body: const CryptoPricePair(),
         floatingActionButton: FloatingActionButton(
