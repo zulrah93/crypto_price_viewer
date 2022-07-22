@@ -9,22 +9,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var pricePairs = [const CryptoPricePair()];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home Screen',
-      debugShowCheckedModeBanner: false, // Rather not show to user that the build is in debug mode
+      debugShowCheckedModeBanner:
+          false, // Rather not show to user that the build is in debug mode
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: primaryColorA,
-          title: const Text('Crypto Real Time Price Data')
-        ),
-        body: const CryptoPricePair(),
+            backgroundColor: primaryColorA,
+            title: const Text('Crypto Real Time Price Data')),
+        body: ListView.builder(
+            itemCount: pricePairs.length,
+            itemBuilder: (BuildContext context, int index) {
+              return pricePairs[index];
+            }),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_box_rounded),
           backgroundColor: primaryColorA,
           onPressed: () {
-
+            setState(() {
+              pricePairs.add(const CryptoPricePair());
+            });
           },
         ),
       ),
